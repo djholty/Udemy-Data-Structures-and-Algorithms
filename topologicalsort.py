@@ -9,18 +9,18 @@ class Graph:
         self.graph[vertex].append(edge)
 
     def topologicalSortUtil(self, v, visited, stack):
-        visited.append(v)
-        for i in self.graph[v]:
+        visited.append(v)  #O1
+        for i in self.graph[v]:#OE
             if i not in visited:
                 self.topologicalSortUtil(i, visited, stack)
         
-        stack.insert(0,v)
+        stack.insert(0,v)#O1
 
     def topologicalSort(self):
-        visited = []
+        visited = [] 
         stack = []
 
-        for k in list(self.graph):
+        for k in list(self.graph):#OE+V
             if k not in visited:
                 self.topologicalSortUtil(k, visited, stack)
         
